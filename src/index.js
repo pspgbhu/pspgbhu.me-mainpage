@@ -73,11 +73,12 @@ let lineCount = 10,
     randomColor = util.randomColor,
     randomSpeed = util.randomSpeed,
 		canvas = document.getElementById('canvas'),
- 		stage = new Stage(canvas);
+ 		stage = new Stage(canvas),
+    ctx = canvas.getContext('2d');
 
 
 new CustomWord('p', {
-  x: 60,
+  x: 160,
   color: util.randomColor(),
   motion: motion.dance,
   data: {angle: 0, r:5 ,step:Math.PI / 50 },
@@ -85,35 +86,35 @@ new CustomWord('p', {
 
 stage.add(new Word('s',{
   color: util.randomColor(),
-  x:145,
+  x:245,
   motion: motion.dance,
   data: {angle: 0, r:5 ,step:Math.PI / 40 }
 }))
 
 
 new CustomWord('p', {
-  x: 230,
+  x: 330,
   color: util.randomColor(),
   motion: motion.dance,
   data: {angle: 0, r:5 ,step:Math.PI / 50 },
 });
 
 new CustomWord('g', {
-  x: 315,
+  x: 415,
   color: util.randomColor(),
   data: {angle: 0, r:5 ,step:Math.PI / 70 },
   motion: motion.dance,
 });
 
 new CustomWord('b', {
-  x: 400,
+  x: 500,
   color: util.randomColor(),
   data: {angle: 0, r:5 ,step:Math.PI / 50 },
   motion: motion.dance,
 });
 
 new CustomWord('h', {
-  x: 485,
+  x: 585,
   color: util.randomColor(),
   data: {angle: 0, r:5 ,step:Math.PI / 100 },
   motion: motion.dance,
@@ -121,7 +122,7 @@ new CustomWord('h', {
 
 stage.add(new Word('u',{
   color: util.randomColor(),
-  x:570,
+  x: 670,
   motion: motion.dance,
   data: {angle: 0, r:5 ,step:Math.PI / 50 }
 }))
@@ -132,3 +133,5 @@ function tick(){
 }
 
 tick();
+
+ctx.scale(2, 2);
