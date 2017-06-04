@@ -1,8 +1,19 @@
 const path = require('path');
 const UglifyJSPlugin = require('uglifyjs-webpack-plugin');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
+const ExtractTextPlugin = require("extract-text-webpack-plugin");
 
-module.exports = {
+const cssLoader = {
+  test: /\.css$/,
+  include: [
+    path.resolve(__dirname, "src"),
+  ],
+  exclude: [
+    path.resolve(__dirname, "node_modules"),
+  ],
+}
+
+const webpackConfig = {
   entry: {
     main: './src/index.js',
   },
@@ -10,7 +21,8 @@ module.exports = {
   output: {
     filename: 'js/[name].bundle.js',
     path: path.resolve(__dirname, 'dist'),
-    publicPath: 'http://static.pspgbhu.me/main'
+    publicPath: process.env.NODE_NEV === 'production'
+     ? 'http://static.pspgbhu.me/main' : '',
   },
 
   module: {
@@ -43,10 +55,31 @@ module.exports = {
       compress: process.env.NODE_NEV === 'production',
     }),
 
-    // new HtmlWebpackPlugin({
-    //   template: './index.html',
-    //   favicon: './favicon.jpg',
-    //   inject: true,
-    // }),
+    new HtmlWebpackPlugin({
+      template: './index.html',
+      inject: true,
+    }),
   ],
 };
+
+
+
+if (process.env.NODE_NEV === 'production') {
+  cssLoader.use = ExtractTextPlugin.extract({
+    fallback: 'style-loader',
+    use: [
+        'css-loader',
+        'postcss-loader',
+      ],
+    });
+  webpackConfig.plugins.push(new ExtractTextPlugin({
+    filename: 'css/style.css',
+  }));
+
+} else {
+  cssLoader.use = ['style-loader', 'css-loader', 'postcss-loader'];
+}
+
+webpackConfig.module.rules.push(cssLoader);
+
+module.exports = webpackConfig;

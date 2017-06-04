@@ -1,3 +1,5 @@
+import './reset.css';
+import './style.css';
 import curvejs from 'curvejs';
 
 const  { Stage, Word, Curve, motion } = curvejs;
