@@ -7,8 +7,8 @@
     "test": "echo \"Error: no test specified\" && exit 1",
     "build": "rm -rf dist && cross-env NODE_NEV=production webpack",
     "dev": "webpack-dev-server --hot --inline",
-    "upload": "scp -i ~/.ssh/my-ssh-key -r dist brotherchun001@35.187.146.145:/var/www/static/main",
-    "uploadhtml": "scp -i ~/.ssh/my-ssh-key index.html brotherchun001@35.187.146.145:/var/www/html/"
+    "upload": "scp -i ~/.ssh/my-ssh-key -r dist/* brotherchun001@35.187.146.145:/var/www/static/main",
+    "uploadhtml": "scp -i ~/.ssh/my-ssh-key dist/index.html brotherchun001@35.187.146.145:/var/www/html/"
   },
   "keywords": [
     "pspgbhu"
