@@ -5,8 +5,10 @@
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "build": "webpack",
-    "dev": "webpack-dev-server --hot --inline"
+    "build": "cross-env NODE_NEV=production webpack",
+    "dev": "webpack-dev-server --hot --inline",
+    "upload": "scp -i ~/.ssh/my-ssh-key dist/* brotherchun001@35.187.146.145:/var/www/static/main",
+    "uploadhtml": "scp -i ~/.ssh/my-ssh-key index.html brotherchun001@35.187.146.145:/var/www/html/"
   },
   "keywords": [
     "pspgbhu"
@@ -21,6 +23,9 @@
     "babel-loader": "^7.0.0",
     "babel-preset-es2015": "^6.24.1",
     "babel-preset-stage-2": "^6.24.1",
+    "cross-env": "^5.0.0",
+    "html-webpack-plugin": "^2.28.0",
+    "uglifyjs-webpack-plugin": "^0.4.3",
     "webpack": "^2.6.1"
   }
 }
