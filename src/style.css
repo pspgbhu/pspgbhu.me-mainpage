@@ -46,11 +46,13 @@ header ul {
 header ul li {
   position: relative;
   display: inline-block;
-  margin-right: 15px;
-  padding: 5px;
 }
 
 header a {
+  display: block;
+  margin-right: 15px;
+  padding: 5px;
+
   cursor: pointer;
   color: #ccc;
   opacity: .3;
@@ -71,19 +73,31 @@ header a:hover {
   background: #ccc;
 
   opacity: 0;
-  transform: scale3d(0, 1, 1);
+  transform: scale3d(0, 0, 1);
   transform-origin: left;
   transition: transform .6s ease-out;
 }
 header a:hover + .header-underline-blog {
-  opacity: 1;
-  transform: scale3d(1, 0, 1);
+  animation: line .35s linear 1 forwards;
 }
 header a:hover + .header-underline-lab {
-  opacity: 1;
-  transform: scale3d(1, 0, 1);
+  animation: line .35s linear 1 forwards;
 }
 header a:hover + .header-underline-contact {
-  opacity: 1;
-  transform: scale3d(1, 0, 1);
+  animation: line .35s linear 1 forwards;
+}
+
+@keyframes line {
+  0% {
+    opacity: 0;
+    transform: scale3d(0, 0, 1);
+  }
+  50% {
+    opacity: 1;
+    transform: scale3d(.5, .5, 1);
+  }
+  100% {
+    opacity: 1;
+    transform: scale3d(1, 1, 1);
+  }
 }
