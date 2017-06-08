@@ -4,7 +4,6 @@
   "description": "The main page of pspgbhu's personal website",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
     "build": "rm -rf dist && cross-env NODE_NEV=production webpack",
     "dev": "webpack-dev-server --hot --inline",
     "upload": "scp -i ~/.ssh/my-ssh-key -r dist/* brotherchun001@35.187.146.145:/var/www/static/main",
