@@ -71,7 +71,7 @@ header a:hover {
   bottom: 0;
 
   width: calc(19vw + 240px);
-  height: 1px;
+  height: 2px;
   background: #ccc;
 
   opacity: 0;
